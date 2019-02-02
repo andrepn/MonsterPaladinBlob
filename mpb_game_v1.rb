@@ -316,6 +316,7 @@ begin
             #player dead message then restart loop
             unless player.Alive
               puts "You lost this one better luck next time"
+            end
 
           #enemy dead message then restart loop
           else
@@ -335,6 +336,7 @@ begin
           #player dead message then restart loop
           unless player.Alive
             puts "You lost this one better luck next time"
+          end
         end
       end
     when "QUIT"
