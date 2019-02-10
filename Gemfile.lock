@@ -12,7 +12,7 @@ DEPENDENCIES
   ruby-debug-ide
 
 RUBY VERSION
-   ruby 2.6.1p33
+   ruby 2.5.2p104
 
 BUNDLED WITH
    1.17.3
