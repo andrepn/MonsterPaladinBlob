@@ -16,7 +16,6 @@ def play_game
   created_character_hash[character_name] = character_object
   puts created_character_hash[character_name]
 
-  next_action = ""
   loop do
     #COULD ADD SAVE AND LOAD FEATURES FOR CHARACTERS, COULD ADD TEAMFIGHTS
     puts "What would you like to do? To create a new character type create, or to battle type battle, or to quit type QUIT"
