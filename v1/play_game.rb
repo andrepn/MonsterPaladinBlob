@@ -1,4 +1,4 @@
-require_relative 'mpb_game_v1.rb'
+require_relative 'v1/_game_v1.rb'
 
 module GameEngine
   def create_character_hashes
