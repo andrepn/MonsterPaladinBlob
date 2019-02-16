@@ -1,0 +1,18 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (12.3.2)
+    ruby-debug-ide (0.6.1)
+      rake (>= 0.8.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ruby-debug-ide
+
+RUBY VERSION
+   ruby 2.5.2p104
+
+BUNDLED WITH
+   1.17.3
