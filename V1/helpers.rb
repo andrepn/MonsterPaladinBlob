@@ -19,7 +19,7 @@ module V1
       @paladin_base_health, @paladin_health_rand, @paladin_base_power, @paladin_power_rand = Paladin.base_stats
       @monster_base_health, @monster_health_rand, @monster_base_power, @monster_power_rand = Monster.base_stats
 
-      [char_name, random_char] = determine_if_random_and_create_characters(random)
+      char_name, random_char = determine_if_random_and_create_characters(random)
 
       [char_name, random_char]
 
