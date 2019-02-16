@@ -4,7 +4,7 @@ module V1
 
     def self.play_game
       begin
-        created_character_hash, player_character_hash, enemy_character_hash = create_character_hashes
+        created_character_hash, @player_character_hash, @enemy_character_hash = create_character_hashes
 
         puts "Time to create your first character:"
         character_name, character_object       = Helpers.create_new_character
@@ -97,9 +97,9 @@ module V1
                 created_character_hash[enemy_created_character]
               when "rando"
                 random_char_name, random_char = Helpers.create_new_character(random = true)
-                enemy_character_hash[random_char_name] = random_char
-                puts "Your enemy is a #{random_char.type} with the following stats: #{enemy_character_hash[random_char_name]}"
-                enemy_character_hash[random_char_name]
+                @enemy_character_hash[random_char_name] = random_char
+                puts "Your enemy is a #{random_char.type} with the following stats: #{@enemy_character_hash[random_char_name]}"
+                @enemy_character_hash[random_char_name]
               end
       enemy
     end
