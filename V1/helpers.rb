@@ -43,14 +43,30 @@ module V1
     def self.random_characters_choice
       random_char = case random(@char_types).downcase
                     when 'blob'
-                      args = [@char_name, health(@blob_base_health, @blob_health_rand), power(@blob_base_power, @blob_power_rand), random(@blob_colors), random(@blob_sizes)]
-                      generate_random_character(Blob, args)
+                      @args = [ @char_name,
+                               health(@blob_base_health, @blob_health_rand),
+                               power(@blob_base_power, @blob_power_rand),
+                               random(@blob_colors),
+                               random(@blob_sizes)
+                             ]
+                      generate_random_character(Blob)
                     when 'paladin'
-                      args = [@char_name, health(@paladin_base_health, @paladin_health_rand), power(@paladin_base_power, @paladin_power_rand), random(@paladin_kingdoms), random(@paladin_styles)]
-                      generate_random_character(Paladin, args)
+                      @args = [
+                              @char_name,
+                              health(@paladin_base_health, @paladin_health_rand),
+                              power(@paladin_base_power, @paladin_power_rand),
+                              random(@paladin_kingdoms),
+                              random(@paladin_styles)
+                             ]
+                      generate_random_character(Paladin)
                     when 'monster'
-                      args = [@char_name, health(@monster_base_health, @monster_health_rand), power(@monster_base_power, @monster_power_rand), random(@monster_kinds), random(@monster_builds)]
-                      generate_random_character(Monster, args)
+                      @args = [
+                               @char_name,
+                               health(@monster_base_health, @monster_health_rand),
+                               power(@monster_base_power, @monster_power_rand),
+                               random(@monster_kinds), random(@monster_builds)
+                             ]
+                      generate_random_character(Monster)
                     end
       random_char
     end
@@ -76,30 +92,48 @@ module V1
                     # blob_size = gets.chomp
                     blob_size = 'Medium'
 
-                    args = [@char_name, health(blob_base_health, blob_health_rand), power(blob_base_power, blob_power_rand), blob_color, blob_size]
-                    generate_random_character(Blob, args)
+                    @args = [
+                             @char_name,
+                             health(@blob_base_health, @blob_health_rand),
+                             power(@blob_base_power, @blob_power_rand),
+                             @blob_color,
+                             @blob_size
+                            ]
+                    generate_random_character(Blob)
                   when 'paladin'
                     puts 'What kingdom is your Paladin from? You may choose Socialist, Praxeological, or Industrialist'
                     paladin_kingdom = gets.chomp
                     puts "What is your Paladin's style? You may choose Highlander, Ninja, or Centurian"
                     paladin_style = gets.chomp
 
-                    args = [@char_name, health(paladin_base_health, paladin_health_rand), power(paladin_base_power, paladin_power_rand), paladin_kingdom, paladin_style]
-                    generate_random_character(Paladin, args)
+                    @args = [
+                              @char_name,
+                              health(@paladin_base_health, @paladin_health_rand),
+                              power(@paladin_base_power, @paladin_power_rand),
+                              @paladin_kingdom,
+                              @paladin_style
+                             ]
+                    generate_random_character(Paladin)
                   when 'monster'
                     puts "What kind of creature is your Monster? You may choose Ogre, Goblin, or Cyclops"
                     monster_kind = gets.chomp
                     puts "What is the build of your Monster? You may choose Beefy, Average, or Mini"
                     monster_build = gets.chomp
 
-                    args = [@char_name, health(monster_base_health, monster_health_rand), power(monster_base_power, monster_power_rand), monster_kind, monster_build]
-                    generate_random_character(Monster, args)
+                    @args = [
+                             @char_name,
+                             health(@monster_base_health, @monster_health_rand),
+                             power(@monster_base_power, @monster_power_rand),
+                             @monster_kind,
+                             @monster_build
+                            ]
+                    generate_random_character(Monster)
                   end
       character
     end
 
-    def self.generate_random_character(klass, args)
-      klass.new(*args)
+    def self.generate_random_character(klass)
+      klass.new(*@args)
     end
 
     def self.random_char_name
