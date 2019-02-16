@@ -101,9 +101,9 @@ module V1
 
     def initialize(name, health, power, kind, build, type = 'Monster', spell = 'Rage')
       super(name, health, power)
-      @kind = kind
+      @kind  = kind
       @build = build
-      @type = type
+      @type  = type
       @spell = spell
     end
 
