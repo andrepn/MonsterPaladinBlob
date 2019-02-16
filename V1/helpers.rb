@@ -22,7 +22,6 @@ module V1
       char_name, random_char = determine_if_random_and_create_characters(random)
 
       [char_name, random_char]
-
     end
 
     def self.determine_if_random_and_create_characters(random)
@@ -122,8 +121,8 @@ module V1
     def self.attack(c1, c2)
       return false                              if is.type_blob?(c2)
       return remove_health(c1, c2)              if is.shield_less_than_zero(c2)
-      return adequately_shielded_attack(c1, c2) if c2.shield > 0
-      return adequeate_attack(c1, c2)           if c2.shield >= c1.power
+      return adequately_shielded_attack(c1, c2) if is.c2_shield_is_more_than_zero?(c2)
+      return adequeate_attack(c1, c2)           if is.c2_shield_more_than_or_equal_to_c1_power(c1, c2)
 
       is = Struct.new(:c1, :c2) do
         def is.type_blob?(c2)
@@ -134,27 +133,12 @@ module V1
           c2.shield < 0
         end
 
-        def is.yelling?
-          statement.upcase == statement && statement.downcase != statement
+        def is.c2_shield_is_more_than_zero?(c2)
+          c2.shield > 0
         end
 
-        def is.questioning?
-          statement.end_with?("?")
-        end
-      end
-    end
-
-    class Bobs
-      def reply_to(statement)
-        statement = Statement.new(statement)
-        if statement.type?(c1, c2)
-          "Fine. Be that way!"
-        elsif statement.yelling?
-          "Woah, chill out!"
-        elsif statement.questioning?
-          "Sure."
-        else
-          "Whatever."
+        def is.c2_shield_more_than_or_equal_to_c1_power(c1, c2)
+          c2.shield >= c1.power
         end
       end
     end
