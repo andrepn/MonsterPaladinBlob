@@ -1,6 +1,6 @@
 module V1
   class Character
-    attr_accessor :name, :health, :power
+    attr_accessor :name, :health, :power, :alive
 
     def initialize(name, health, power)
       @name   = name
@@ -8,7 +8,7 @@ module V1
       @power  = power
     end
 
-    def alive
+    def alive?
       @health > 0
     end
 
@@ -35,7 +35,7 @@ module V1
       @spell  = spell
     end
 
-    def cast
+    def self.cast
       shield_increase = rand(1..15)
       self.shield += shield_increase
       puts '#{self.name} increased shield by #{shield_increase}'
