@@ -19,18 +19,26 @@ module V1
       @paladin_base_health, @paladin_health_rand, @paladin_base_power, @paladin_power_rand = Paladin.base_stats
       @monster_base_health, @monster_health_rand, @monster_base_power, @monster_power_rand = Monster.base_stats
 
-      case random
-      when false
-        @char_type, @char_name = choose_char_type_and_name
-        character              = choose_and_create_character
+      [char_name, random_char] = determine_if_random_and_create_characters(random)
 
-        [@char_name, character]
-      when true
-        @char_name   = random_char_name
-        random_char  = random_characters_choice
+      [char_name, random_char]
 
-        [@char_name, random_char]
-      end
+    end
+
+    def self.determine_if_random_and_create_characters(random)
+      @char_name, character = case random
+                                when false
+                                  @char_type, @char_name = choose_char_type_and_name
+                                  character              = choose_and_create_character
+
+                                  [@char_name, character]
+                                when true
+                                  @char_name   = random_char_name
+                                  random_char  = random_characters_choice
+
+                                  [@char_name, random_char]
+                                end
+      [@char_name, character]
     end
 
     def self.random_characters_choice
