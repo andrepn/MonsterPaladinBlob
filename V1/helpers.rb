@@ -25,18 +25,17 @@ module V1
     end
 
     def self.determine_if_random_and_create_characters(random)
-      @char_name, character = case random
-                                when false
+      @char_name, character = if random
                                   @char_type, @char_name = choose_char_type_and_name
                                   character              = choose_and_create_character
 
                                   [@char_name, character]
-                                when true
+                              else
                                   @char_name   = random_char_name
                                   random_char  = random_characters_choice
 
                                   [@char_name, random_char]
-                                end
+                              end
       [@char_name, character]
     end
 
