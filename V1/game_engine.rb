@@ -50,14 +50,9 @@ module V1
 
                 puts "Now it's your enemy's turn"
                 attack(@enemy, @player)
+
                 puts "Ouch! #{@enemy.name} hit you for #{@enemy.power}. Your health is down to #{@player.health}"
-
-                #player dead message then restart loop
-                unless @player.alive
-                  puts "You lost this one better luck next time"
-                end
-
-                #all casts are self cast so enemy cannot die
+                puts "You lost this one better luck next time" unless @player.alive
               elsif move_choice == "cast"
                 puts "Your character is a #{@player.type}; you cast #{@player.spell}"
                 @player.cast
@@ -75,11 +70,11 @@ module V1
           when "QUIT"
             abort("Thanks for playing!")
           else
-            puts "That's not an option, you can create, 'battle', or 'QUIT'"
+            puts "That's not an option, you can 'create', 'battle', or 'QUIT'"
           end
         end
       rescue => e
-        puts "sorry we have an error to put out! Please report this to Andrew #{e}"
+        puts "sorry we have an error to put out! Please report this error to Andrew: #{e}"
       end
     end
 

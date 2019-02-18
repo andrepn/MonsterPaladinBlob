@@ -66,6 +66,7 @@ module V1
                                power(@monster_base_power, @monster_power_rand),
                                random(@monster_kinds), random(@monster_builds)
                              ]
+
                       generate_random_character(Monster)
                     end
       random_char
